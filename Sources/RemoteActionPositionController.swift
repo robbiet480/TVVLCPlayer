@@ -17,14 +17,10 @@ protocol RemoteActionPositionControllerDelegate {
 
 // MARK: - SurfaceRemotePositionController
 class RemoteActionPositionController: NSObject, PositionController {
-    
-    
     enum Location {
         case left, center, right
     }
-    
-    
-    
+
     @objc
     enum Action: Int {
         case fastForward, rewind, jumpForward, jumpBackward, reset, pause
@@ -137,7 +133,10 @@ class RemoteActionPositionController: NSObject, PositionController {
     private func trackSurfaceTouch() {
         gamePad?.reportsAbsoluteDpadValues = true
         gamePad?.dpad.valueChangedHandler = { (dpad: GCControllerDirectionPad, xValue: Float, yValue: Float) -> Void in
-            
+            guard self.isEnabled else { // We can receive callback even after the untrack method has been called
+                return
+            }
+
             if xValue > 0.5 {
                 self.touchLocation = .right
             } else if xValue < -0.5 {

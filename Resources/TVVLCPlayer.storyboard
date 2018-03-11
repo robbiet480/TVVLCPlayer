@@ -10,6 +10,139 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Item 2-->
+        <scene sceneID="egu-A4-D0K">
+            <objects>
+                <viewController id="vQx-FR-yo4" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="L59-eW-4dz"/>
+                        <viewControllerLayoutGuide type="bottom" id="Tr6-7C-maY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4OU-W7-nUR">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subtitles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVc-wc-Us3">
+                                <rect key="frame" x="884" y="517" width="152" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="h9X-wG-2Xk"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="s2K-5F-LI2"/>
+                    <size key="freeformSize" width="1920" height="1080"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Xg-Y7-6Fd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="11265" y="2188"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="qYJ-FO-u9n">
+            <objects>
+                <viewController id="CHs-fA-V29" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0bU-B8-Zml"/>
+                        <viewControllerLayoutGuide type="bottom" id="f1q-JD-2MK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GGJ-1k-7ev">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Audio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88N-gV-skC">
+                                <rect key="frame" x="914" y="486" width="99" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="NIB-tc-nrW"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="d1I-tf-0SE"/>
+                    <size key="freeformSize" width="1920" height="1080"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BHz-nO-MwS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="10378" y="588"/>
+        </scene>
+        <!--Panel View Controller-->
+        <scene sceneID="trb-5J-59x">
+            <objects>
+                <viewController id="itD-Yi-Vsp" customClass="PanelViewController" customModule="TVVLCPlayer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TQh-Oh-Gyj"/>
+                        <viewControllerLayoutGuide type="bottom" id="FpO-0t-qtA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TqU-vf-TSP">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="500"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpM-gq-mbp">
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="140"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="FFb-Lr-QE1"/>
+                                </constraints>
+                                <items>
+                                    <tabBarItem title="Audio" id="7fw-MI-03a"/>
+                                    <tabBarItem title="Subtitles" id="UYa-kp-t9W"/>
+                                </items>
+                            </tabBar>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VEB-QG-iDf" userLabel="Background">
+                                <rect key="frame" x="0.0" y="142" width="1920" height="358"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items/>
+                            </tabBar>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8rl-vT-YKW" userLabel="Bar">
+                                <rect key="frame" x="0.0" y="140" width="1920" height="2"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="MNa-PK-H1r">
+                                    <rect key="frame" x="0.0" y="0.0" width="1920" height="2"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="WoO-1o-yqZ"/>
+                                </constraints>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="8rl-vT-YKW" firstAttribute="leading" secondItem="TqU-vf-TSP" secondAttribute="leading" id="DCH-x1-Nmg"/>
+                            <constraint firstAttribute="bottom" secondItem="VEB-QG-iDf" secondAttribute="bottom" id="ENo-yg-7bC"/>
+                            <constraint firstItem="8rl-vT-YKW" firstAttribute="top" secondItem="hpM-gq-mbp" secondAttribute="bottom" id="Lig-ak-s87"/>
+                            <constraint firstAttribute="trailing" secondItem="8rl-vT-YKW" secondAttribute="trailing" id="Z0l-8a-kmZ"/>
+                            <constraint firstItem="hpM-gq-mbp" firstAttribute="top" secondItem="TqU-vf-TSP" secondAttribute="top" id="cCS-w1-WtD"/>
+                            <constraint firstItem="hpM-gq-mbp" firstAttribute="leading" secondItem="TqU-vf-TSP" secondAttribute="leading" id="eH0-vs-C80"/>
+                            <constraint firstItem="VEB-QG-iDf" firstAttribute="top" secondItem="8rl-vT-YKW" secondAttribute="bottom" id="eet-ty-x5y"/>
+                            <constraint firstAttribute="trailing" secondItem="VEB-QG-iDf" secondAttribute="trailing" id="eug-Io-mvo"/>
+                            <constraint firstItem="VEB-QG-iDf" firstAttribute="leading" secondItem="TqU-vf-TSP" secondAttribute="leading" id="p9Q-Yq-Qy9"/>
+                            <constraint firstAttribute="trailing" secondItem="hpM-gq-mbp" secondAttribute="trailing" id="rfs-LT-ULd"/>
+                        </constraints>
+                        <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="20" bottom="0.0" trailing="20"/>
+                        <viewLayoutGuide key="safeArea" id="q1d-U3-ZGO"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="YuJ-iz-hKo" appends="YES" id="tKb-wA-CQG"/>
+                        </connections>
+                    </view>
+                    <size key="freeformSize" width="1920" height="500"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4kZ-nP-Kco" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="up" id="YuJ-iz-hKo">
+                    <connections>
+                        <action selector="collapse:" destination="itD-Yi-Vsp" id="Hl9-Wh-IvX"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <tapGestureRecognizer id="P4N-HP-LqE">
+                    <pressTypeMask key="allowedPressTypes" menu="YES"/>
+                    <connections>
+                        <action selector="collapse:" destination="itD-Yi-Vsp" id="2Fn-XY-yR4"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="8324" y="2382"/>
+        </scene>
         <!--PlayerViewController-->
         <scene sceneID="niL-Xe-zdn">
             <objects>
@@ -156,12 +289,13 @@
                             <constraint firstAttribute="trailing" secondItem="n9n-u4-Sme" secondAttribute="trailing" id="jc3-D1-DiF"/>
                             <constraint firstItem="ymh-Zh-rPV" firstAttribute="leading" secondItem="w7f-9P-vY6" secondAttribute="leading" id="oio-1Z-zSh"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="39a-qv-vfc"/>
+                        <viewLayoutGuide key="safeArea" id="efd-oc-0gw"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="rSG-9P-yKm" appends="YES" id="SJx-99-r1j"/>
                             <outletCollection property="gestureRecognizers" destination="Mao-0Z-rHK" appends="YES" id="GDh-Dd-v2k"/>
                             <outletCollection property="gestureRecognizers" destination="dPw-kB-jYe" appends="YES" id="9IQ-JE-gXO"/>
                             <outletCollection property="gestureRecognizers" destination="evZ-3a-6GS" appends="YES" id="Czi-me-D1K"/>
+                            <outletCollection property="gestureRecognizers" destination="eAP-iI-r0X" appends="YES" id="ji3-9h-JLg"/>
                         </connections>
                     </view>
                     <connections>
@@ -180,10 +314,11 @@
                         <outlet property="scrubbingPositionController" destination="nNO-Af-76t" id="7K2-9A-7F0"/>
                         <outlet property="transportBar" destination="e4b-RO-Ryc" id="ZgE-y8-quK"/>
                         <outlet property="videoView" destination="ymh-Zh-rPV" id="amP-sp-RsD"/>
+                        <segue destination="itD-Yi-Vsp" kind="presentation" identifier="panel" modalPresentationStyle="overCurrentContext" id="uAe-JY-4hW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gif-C2-90A" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <gestureRecognizer id="evZ-3a-6GS" customClass="LongPressGestureRecogniser" customModule="TVVLCPlayer" customModuleProvider="target">
+                <gestureRecognizer enabled="NO" id="evZ-3a-6GS" customClass="LongPressGestureRecogniser" customModule="TVVLCPlayer" customModuleProvider="target">
                     <connections>
                         <action selector="click:" destination="WfO-Rv-1Kc" id="Akg-74-X7c"/>
                         <outlet property="delegate" destination="WfO-Rv-1Kc" id="6dv-DC-Dg2"/>
@@ -207,25 +342,34 @@
                         <outlet property="rightActionIndicator" destination="ZnM-wJ-iBG" id="5g2-nE-Usd"/>
                     </connections>
                 </customObject>
+                <swipeGestureRecognizer direction="down" id="eAP-iI-r0X">
+                    <connections>
+                        <action selector="showPanel:" destination="WfO-Rv-1Kc" id="ql9-3x-M62"/>
+                        <outlet property="delegate" destination="WfO-Rv-1Kc" id="w56-cj-B6W"/>
+                    </connections>
+                </swipeGestureRecognizer>
                 <panGestureRecognizer enabled="NO" minimumNumberOfTouches="1" id="rSG-9P-yKm">
                     <connections>
                         <action selector="scrub:" destination="nNO-Af-76t" id="zFz-wQ-Mc6"/>
+                        <outlet property="delegate" destination="WfO-Rv-1Kc" id="Mtg-gl-ufk"/>
                     </connections>
                 </panGestureRecognizer>
                 <tapGestureRecognizer enabled="NO" id="dPw-kB-jYe">
                     <pressTypeMask key="allowedPressTypes" playPause="YES"/>
                     <connections>
                         <action selector="playOrPause:" destination="WfO-Rv-1Kc" id="h8V-bp-Vyi"/>
+                        <outlet property="delegate" destination="WfO-Rv-1Kc" id="Afk-if-w9i"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer enabled="NO" id="Mao-0Z-rHK">
                     <pressTypeMask key="allowedPressTypes" menu="YES"/>
                     <connections>
                         <action selector="cancel:" destination="WfO-Rv-1Kc" id="EBL-7J-hEe"/>
+                        <outlet property="delegate" destination="WfO-Rv-1Kc" id="eRZ-QP-pjS"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="8296" y="3081"/>
+            <point key="canvasLocation" x="8459" y="4101"/>
         </scene>
     </scenes>
 </document>
