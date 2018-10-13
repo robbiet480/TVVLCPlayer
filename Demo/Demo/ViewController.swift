@@ -25,7 +25,25 @@ class ViewController: UIViewController {
         if let playerVC = segue.destination as? VLCPlayerViewController {
             let media = VLCMedia(url: demoVideoURL)
             playerVC.media = media
+            playerVC.delegate = self
         }
     }
 }
 
+extension ViewController: VLCMediaPlayerViewControllerDelegate {
+    func mediaPlayer(_ playerViewController: VLCPlayerViewController, stateChanged state: VLCMediaPlayerState) {
+        print("State changed: \(state.rawValue)")
+    }
+    
+    func mediaPlayer(_ playerViewController: VLCPlayerViewController, timeChanged time: VLCTime) {
+        print("Time changed: \(time)")
+    }
+    
+    func mediaPlayer(_ playerViewController: VLCPlayerViewController, titleChanged name: String, duration: Int, isMenu: Bool) {
+        print("Title changed: \(name)")
+    }
+    
+    func mediaPlayer(_ playerViewController: VLCPlayerViewController, chapterChanged name: String, timeOffset: Int, duration: Int) {
+        print("Chapter changed: \(name)")
+    }
+}
