@@ -235,7 +235,9 @@ extension VLCPlayerViewController {
     }
 
     fileprivate func setUpPositionController() {
-        guard player.isSeekable && !isOpening && !isPanelDisplayed else {
+
+        // Originally this also checked player.isSeekable == true, but that causes play/pause/seek to not work for live streams
+        guard !isOpening && !isPanelDisplayed else {
             positionController = nil
             return
         }
