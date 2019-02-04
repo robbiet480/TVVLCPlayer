@@ -20,6 +20,7 @@ Pod::Spec.new do |s|
 
   s.frameworks = 'UIKit'
   s.dependency 'TVVLCKit'
+  s.dependency 'Kingfisher'
   s.resources = ['Resources/*.storyboard','Resources/*.xcassets']
   s.script_phase = { :name => 'Add modulemaps in VLCKit', :script => 'cp -rf "${PODS_TARGET_SRCROOT}/Modules" "${PODS_ROOT}/TVVLCKit/TVVLCKit.framework/Modules"', :execution_position => :before_compile }
   s.preserve_path = "Modules"

@@ -8,6 +8,7 @@
 
 import UIKit
 import TVVLCKit
+import Kingfisher
 
 class InfoViewController: UIViewController {
     var player: VLCMediaPlayer!
@@ -16,7 +17,8 @@ class InfoViewController: UIViewController {
     @IBOutlet weak var artworkImageView: UIImageView!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var captionLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var ratingImageView: UIImageView!
     @IBOutlet weak var qualityImageView: UIImageView!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var artworkWidthConstraint: NSLayoutConstraint!
@@ -28,7 +30,7 @@ class InfoViewController: UIViewController {
         // TODO: Find a better way to handle variable height of the info panel
         var height = mainStackView.frame.height
         if artworkImageView.isHidden {
-            height = captionLabel.bounds.height + titleLabel.bounds.height + 40
+            height = durationLabel.bounds.height + titleLabel.bounds.height + 40
             if !textView.isHidden {
                 height += textView.contentSize.height
             }
@@ -41,19 +43,32 @@ class InfoViewController: UIViewController {
 
     func configure() {
         configureTitle()
-        configureCaption()
+        configureProperties()
         configureArtwork()
         configureDescription()
     }
 
     func configureArtwork() {
+        self.artworkImageView.isHidden = true
+
         let mediaDict = player.media?.metaDictionary
-        if let image = mediaDict?[VLCMetaInformationArtwork] as? UIImage {
+        if let imageURLStr = mediaDict?[VLCMetaInformationArtworkURL] as? String,
+            let imageURL = URL(string: imageURLStr) {
+
+            self.artworkImageView.kf.indicatorType = .activity
+            self.artworkImageView.kf.setImage(with: imageURL) { result in
+                switch result {
+                case .success(let val):
+                    self.artworkImageView.isHidden = false
+                    self.artworkWidthConstraint.constant = 200 / val.image.size.height * val.image.size.width
+                case .failure(let error):
+                    print("Error loading image", error)
+                }
+            }
+        } else if let image = mediaDict?[VLCMetaInformationArtwork] as? UIImage {
             artworkImageView.image = image
             artworkImageView.isHidden = false
             artworkWidthConstraint.constant = 200 / image.size.height * image.size.width
-        } else {
-            artworkImageView.isHidden = true
         }
     }
 
@@ -66,14 +81,18 @@ class InfoViewController: UIViewController {
         }
     }
 
-    func configureCaption() {
+    func configureProperties() {
         let media = player.media
-        var caption: String = ""
+        var durationStr: String = ""
         if let time = media?.length.string {
-            caption.append(time)
+            durationStr = time
         }
-        let bundle = Bundle(for: InfoViewController.self)
-        captionLabel.text = caption
+
+        if let manualDurationStr = media?.metaDictionary["duration"] as? String {
+            durationStr = manualDurationStr
+        }
+
+        durationLabel.text = durationStr
 
         let videoSize: CGSize
         if let width = media?.metaDictionary[VLCMediaTracksInformationVideoWidth] as? NSNumber,
@@ -83,13 +102,21 @@ class InfoViewController: UIViewController {
             videoSize = player.videoSize
         }
 
+        qualityImageView.image = nil
+
+        let bundle = Bundle(for: InfoViewController.self)
         if videoSize >= CGSize(width: 3840, height: 2160) {
             qualityImageView.image = UIImage(named: "4k", in: bundle, compatibleWith: nil)
         } else if player.videoSize >= CGSize(width: 1280, height: 720) {
             qualityImageView.image = UIImage(named: "hd", in: bundle, compatibleWith: nil)
-        } else {
-            qualityImageView.image = nil
         }
+
+        ratingImageView.image = nil
+
+        if let ratingStr = media?.metaDictionary[VLCMetaInformationRating] as? String {
+            ratingImageView.image = UIImage(named: ratingStr, in: bundle, compatibleWith: nil)
+        }
+
     }
 
     func configureDescription() {

@@ -607,9 +607,9 @@
                                                 </variation>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="HK6-3q-znF">
-                                                <rect key="frame" x="0.0" y="34" width="121" height="34"/>
+                                                <rect key="frame" x="0.0" y="34" width="203" height="34"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="244" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMq-v1-wUM">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="244" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMq-v1-wUM" userLabel="Duration Label">
                                                         <rect key="frame" x="0.0" y="0.0" width="69" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="28"/>
                                                         <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -618,8 +618,11 @@
                                                             <color key="textColor" white="0.0" alpha="0.59606073940000004" colorSpace="calibratedWhite"/>
                                                         </variation>
                                                     </label>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PG-13" translatesAutoresizingMaskIntoConstraints="NO" id="gqV-ag-8UJ" userLabel="Rating Image View">
+                                                        <rect key="frame" x="81" y="0.0" width="70" height="34"/>
+                                                    </imageView>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hd" translatesAutoresizingMaskIntoConstraints="NO" id="Q29-66-XRI">
-                                                        <rect key="frame" x="81" y="0.0" width="40" height="34"/>
+                                                        <rect key="frame" x="163" y="0.0" width="40" height="34"/>
                                                         <color key="tintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="40" id="GjM-ch-uoM"/>
@@ -663,10 +666,11 @@
                     <connections>
                         <outlet property="artworkImageView" destination="lFK-vf-c27" id="Tyd-he-xxQ"/>
                         <outlet property="artworkWidthConstraint" destination="mie-AL-412" id="hZT-SL-uLn"/>
-                        <outlet property="captionLabel" destination="kMq-v1-wUM" id="uvb-T3-ubm"/>
                         <outlet property="descriptionTextView" destination="sjY-Dz-cmt" id="dgu-hY-2hs"/>
+                        <outlet property="durationLabel" destination="kMq-v1-wUM" id="s1c-z6-4ll"/>
                         <outlet property="mainStackView" destination="yh0-je-eeT" id="k3j-m1-zjG"/>
                         <outlet property="qualityImageView" destination="Q29-66-XRI" id="xo2-J0-2gR"/>
+                        <outlet property="ratingImageView" destination="gqV-ag-8UJ" id="ViI-jO-zeK"/>
                         <outlet property="rightStackView" destination="rZk-E9-UOd" id="6HR-EU-Wv2"/>
                         <outlet property="textView" destination="sjY-Dz-cmt" id="hnB-KW-ar9"/>
                         <outlet property="titleLabel" destination="aVc-LI-tUH" id="Gnf-Pw-TOF"/>
@@ -679,6 +683,7 @@
     </scenes>
     <resources>
         <image name="Checkmark" width="21" height="20"/>
+        <image name="PG-13" width="70" height="22"/>
         <image name="hd" width="26" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
