@@ -55,7 +55,7 @@ fileprivate final class FocusView: UIView {
         layer.frame = bounds
         layer.frame.size.width = 700.0
         layer.frame.origin.x = bounds.midX - layer.frame.size.width / 2.0
-        layer.type = .radial
+        layer.type = kCAGradientLayerRadial
         layer.startPoint = CGPoint(x: 0.5, y: 0.5)
         layer.endPoint = CGPoint(x: 1.0, y: 2.0)
         layer.locations = [0.1, 1] as [NSNumber]
