@@ -9,6 +9,7 @@
 import UIKit
 import GameController
 import TVVLCKit
+import MediaPlayer
 
 /// `VLCPlayerViewController` is a subclass of `UIViewController` that can be used to display the visual content of an `VLCPlayer` object and the standard playback controls.
 public class VLCPlayerViewController: UIViewController {
@@ -143,6 +144,8 @@ public class VLCPlayerViewController: UIViewController {
         setUpPositionController()
         updateViews(with: player.time)
         animateIndicatorsIfNecessary()
+        self.setupRemoteTransportControls()
+        self.setupNowPlaying()
     }
 
     deinit {
@@ -211,11 +214,54 @@ public class VLCPlayerViewController: UIViewController {
         player.play()
         hideControl()
     }
+
+    func setupRemoteTransportControls() {
+        // Get the shared MPRemoteCommandCenter
+        let commandCenter = MPRemoteCommandCenter.shared()
+
+        // Add handler for Play Command
+        commandCenter.playCommand.addTarget { [unowned self] event in
+            if self.player.rate == 0.0 {
+                self.player.play()
+                return .success
+            }
+            return .commandFailed
+        }
+
+        // Add handler for Pause Command
+        commandCenter.pauseCommand.addTarget { [unowned self] event in
+            if self.player.rate == 1.0 {
+                self.player.pause()
+                return .success
+            }
+            return .commandFailed
+        }
+    }
+
+    func setupNowPlaying() {
+        // Define Now Playing Info
+        var nowPlayingInfo = [String : Any]()
+        nowPlayingInfo[MPMediaItemPropertyTitle] = self.player.media.metadata(forKey: VLCMetaInformationTitle)
+        nowPlayingInfo[MPMediaItemPropertyArtist] = self.player.media.metadata(forKey: VLCMetaInformationDescription)
+
+        if let playerTime = self.player.time.value {
+            nowPlayingInfo[MPNowPlayingInfoPropertyElapsedPlaybackTime] = playerTime.floatValue / 1000
+        }
+
+        nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = self.player.media.length.intValue / 1000
+
+        nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = self.player.rate
+
+        // Set the metadata
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+    }
 }
 
 // MARK: - Update views
 extension VLCPlayerViewController {
     fileprivate func updateViews(with time: VLCTime) {
+
+        self.setupNowPlaying()
 
         if let startTime = self.StartTime, let endTime = self.EndTime {
             let dateFormatter = DateFormatter()
@@ -316,6 +362,8 @@ extension VLCPlayerViewController {
         setUpPositionController()
         animateIndicatorsIfNecessary()
         handlePlaybackControlVisibility()
+        self.setupRemoteTransportControls()
+        self.setupNowPlaying()
 
         if player.state == .ended || player.state == .error || player.state == .stopped {
             dismiss(animated: true)
