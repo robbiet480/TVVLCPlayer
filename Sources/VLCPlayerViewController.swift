@@ -58,6 +58,9 @@ public class VLCPlayerViewController: UIViewController {
         }
     }
 
+    public var StartTime: Date?
+    public var EndTime: Date?
+
     private var positionController: PositionController? {
         didSet {
             guard positionController !== oldValue else {
@@ -213,14 +216,35 @@ public class VLCPlayerViewController: UIViewController {
 // MARK: - Update views
 extension VLCPlayerViewController {
     fileprivate func updateViews(with time: VLCTime) {
+
+        if let startTime = self.StartTime, let endTime = self.EndTime {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "HH:mm"
+
+            let currentTime = Date()
+
+            positionLabel.text = dateFormatter.string(from: startTime)
+            remainingLabel.text = dateFormatter.string(from: endTime)
+            scrubbingLabel.text = dateFormatter.string(from: currentTime)
+
+            // let position = (currentTime.timeIntervalSince1970 - startTime.timeIntervalSince1970) / (endTime.timeIntervalSince1970 - startTime.timeIntervalSince1970)
+
+            // print("Playback position", position, round(CGFloat(position) * transportBar.bounds.width))
+
+            // positionConstraint.constant = round(CGFloat(position) * transportBar.bounds.width)
+
+            positionConstraint.constant = transportBar.bounds.width / 2
+            return
+        }
+
         positionLabel.text = time.stringValue
 
         guard let totalTime = player.totalTime,
             let value = time.value?.doubleValue,
             let totalValue = totalTime.value?.doubleValue else {
-            remainingLabel.isHidden = true
-            positionConstraint.constant = transportBar.bounds.width / 2
-            return
+                remainingLabel.isHidden = true
+                positionConstraint.constant = transportBar.bounds.width / 2
+                return
         }
 
         positionConstraint.constant = round(CGFloat(value / totalValue) * transportBar.bounds.width)
@@ -228,6 +252,12 @@ extension VLCPlayerViewController {
     }
 
     fileprivate func updateRemainingLabel(with time: VLCTime) {
+        if let endTime = self.EndTime {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "HH:mm"
+            remainingLabel.text = dateFormatter.string(from: endTime)
+            return
+        }
         guard let totalTime = player.totalTime, totalTime.value != nil else {
             return
         }
@@ -243,7 +273,12 @@ extension VLCPlayerViewController {
         }
 
         if player.state == .paused {
-            scrubbingPositionController.selectedTime = player.time
+            print("player.time", player.time)
+            if self.StartTime != nil && self.EndTime != nil {
+                scrubbingPositionController.selectedTime = VLCTime(Date().timeIntervalSince1970)
+            } else {
+                scrubbingPositionController.selectedTime = player.time
+            }
             positionController = scrubbingPositionController
         } else {
             positionController = remoteActionPositionController

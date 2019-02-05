@@ -84,12 +84,8 @@ class InfoViewController: UIViewController {
     func configureProperties() {
         let media = player.media
         var durationStr: String = ""
-        if let time = media?.length.string {
+        if media?.length.intValue ?? 0 > Int32(0), let time = media?.length.string {
             durationStr = time
-        }
-
-        if let manualDurationStr = media?.metaDictionary["duration"] as? String {
-            durationStr = manualDurationStr
         }
 
         durationLabel.text = durationStr
