@@ -48,6 +48,7 @@
 		3FE3F40A21D813D700F8C472 /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE3F40921D813D700F8C472 /* AudioViewController.swift */; };
 		3FE3F40C21D8151300F8C472 /* SubtitlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE3F40B21D8151300F8C472 /* SubtitlesViewController.swift */; };
 		3FE3F41121D835A200F8C472 /* SelectableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE3F41021D835A200F8C472 /* SelectableTableViewCell.swift */; };
+		B6570B68220A62A3001F1957 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6570B67220A62A3001F1957 /* Kingfisher.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +125,7 @@
 		3FE3F40921D813D700F8C472 /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
 		3FE3F40B21D8151300F8C472 /* SubtitlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitlesViewController.swift; sourceTree = "<group>"; };
 		3FE3F41021D835A200F8C472 /* SelectableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableTableViewCell.swift; sourceTree = "<group>"; };
+		B6570B67220A62A3001F1957 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/tvOS/Kingfisher.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6570B68220A62A3001F1957 /* Kingfisher.framework in Frameworks */,
 				3F7CC79221D699AF0094B074 /* TVVLCKit.framework in Frameworks */,
 				3F7CC77421D698C20094B074 /* AudioToolbox.framework in Frameworks */,
 				3F7CC77021D698320094B074 /* AVFoundation.framework in Frameworks */,
@@ -232,6 +235,7 @@
 		3F8FF6F521D63DBC00A86CDF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B6570B67220A62A3001F1957 /* Kingfisher.framework */,
 				3F7CC7BD21D6B1310094B074 /* Modules */,
 				3F7CC79121D699AF0094B074 /* TVVLCKit.framework */,
 				3F7CC78F21D699980094B074 /* libc++.tbd */,
