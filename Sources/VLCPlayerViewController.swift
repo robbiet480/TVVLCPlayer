@@ -220,7 +220,7 @@ public class VLCPlayerViewController: UIViewController {
         let commandCenter = MPRemoteCommandCenter.shared()
 
         // Add handler for Play Command
-        commandCenter.playCommand.addTarget { [unowned self] event in
+        commandCenter.playCommand.addTarget { [unowned self] _ in
             if self.player.rate == 0.0 {
                 self.player.play()
                 return .success
@@ -229,7 +229,7 @@ public class VLCPlayerViewController: UIViewController {
         }
 
         // Add handler for Pause Command
-        commandCenter.pauseCommand.addTarget { [unowned self] event in
+        commandCenter.pauseCommand.addTarget { [unowned self] _ in
             if self.player.rate == 1.0 {
                 self.player.pause()
                 return .success
@@ -240,7 +240,7 @@ public class VLCPlayerViewController: UIViewController {
 
     func setupNowPlaying() {
         // Define Now Playing Info
-        var nowPlayingInfo = [String : Any]()
+        var nowPlayingInfo = [String: Any]()
         nowPlayingInfo[MPMediaItemPropertyTitle] = self.player.media.metadata(forKey: VLCMetaInformationTitle)
         nowPlayingInfo[MPMediaItemPropertyArtist] = self.player.media.metadata(forKey: VLCMetaInformationDescription)
 

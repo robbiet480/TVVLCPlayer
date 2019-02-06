@@ -119,7 +119,7 @@ class PanelViewController: UIViewController {
             return
         }
         let newViewController = viewControllers[selectedIndex]
-        addChildViewController(newViewController)
+        addChild(newViewController)
 
         if let oldViewController = currentViewController {
             newViewController.view.alpha = 0
@@ -142,7 +142,7 @@ class PanelViewController: UIViewController {
 
             },
                            completion: { (_) in
-                            oldViewController.removeFromParentViewController()
+                            oldViewController.removeFromParent()
                             oldViewController.view.removeFromSuperview()
                             oldViewController.view.alpha = 1
 
